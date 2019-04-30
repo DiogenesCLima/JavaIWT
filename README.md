@@ -13,6 +13,11 @@
 ## Estudar
 - HTML5
 - CSS3
+- Interfase
+- Injecao de Dependencia
+- Inversao de Controle
+- Heranca
+- Modelo programacao SPA
 
 ## Exercicios
 1. Missionarios e Canibais

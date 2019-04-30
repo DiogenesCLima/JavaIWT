@@ -15,7 +15,7 @@ public class Program {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Ola Mundo");
-		string nome = "";
+		String nome = "";
 		int valor = 0;
 		double decimal = 0.00;
 		double resultado = (double) valor + decimal;
