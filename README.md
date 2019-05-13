@@ -8,7 +8,7 @@
 
 ## Dicas
 - CRUD - scaffolding
-
+- Blazor
 
 ## Estudar
 - HTML5
@@ -18,6 +18,13 @@
 - Inversao de Controle
 - Heranca
 - Modelo programacao SPA
+- ORM
+- JPA
+- Hibernate
+- Jersey
+- PWA
+- WEBprogresiva
+- 
 
 ## Exercicios
 1. Missionarios e Canibais
