@@ -29,3 +29,6 @@
 ## Exercicios
 1. Missionarios e Canibais
 2. Torre de Hanoi
+3. www.ciceroednilson.com.br/java-criando-um-web-service-rest-com-jersey-e-jpa/
+4. https://www.devmedia.com.br/jpa-e-hibernate-acessando-dados-em-aplicacoes-java/32711
+
