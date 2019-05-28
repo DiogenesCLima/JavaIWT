@@ -29,6 +29,7 @@ public class TelaPessoa extends JPanel {
 				p.setEndereco(textEndereco.getText());
 				p.setEmail(textEmail.getText());
 				p.setCelular(textTelefone.getText());
+				p.salvar();
 			}
 		});
 		btnNewButton.setBounds(303, 202, 89, 23);
