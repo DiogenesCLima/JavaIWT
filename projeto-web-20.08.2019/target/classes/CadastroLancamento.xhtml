@@ -1,0 +1,68 @@
+
+<ui:composition template="/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:define name="titulo">Novo Lançamento</ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewParam name="codigo" />
+		</f:metadata>
+		<h1>Novo Lançamento</h1>
+		
+		<h:form id="frm">
+			<h:button value="Novo" outcome="CadastroLancamento" />
+			<h:button value="Consulta" outcome="ConsultaLancamento"/>
+			
+			<h:messages showDetail="false" showSummary="true" styleClass="form-messages" errorClass="error" infoClass="info" />
+			
+			<h:panelGrid columns="2" styleClass="form-grid" columnClasses="label, campo" id="panel">
+				<h:outputLabel value="Tipo" />
+				<h:selectOneRadio required="true" label="Tipo do lançamento">
+					<f:selectItem itemLabel="Receita" itemValue="receita" />
+					<f:selectItem itemLabel="Despesa" itemValue="despesa" />
+				</h:selectOneRadio>
+				
+				<h:outputLabel value="Pessoa" />
+				<h:selectOneMenu required="true" label="Pessoa">
+					<f:selectItem itemLabel="Selecione" itemDisabled="true" />
+					<f:selectItem itemLabel="Pessoa Fisica" itemValue="pf" />
+					<f:selectItem itemLabel="Pessoa Juridica" itemValue="pj" />
+				</h:selectOneMenu>
+				<h:outputLabel value="Descrição" />
+				<h:inputText size="60" required="true" label="Descrição" />
+				
+				<h:outputLabel value="Valor" />
+				<h:inputText size="12" required="true" label="Valor">
+					<f:convertNumber locale="pt_BR" maxFractionDigits="2" minFractionDigits="2" />
+					<f:validateDoubleRange minimum="0"/>
+				</h:inputText>
+				
+				<h:outputLabel value="Data de Vencimento" />
+				<h:inputText size="12" required="true" label="Data de Vencimento">
+					<f:convertDateTime pattern="dd/MM/yyy"/>
+				</h:inputText>
+				
+				<h:outputLabel value="Data de Pagamento" />
+				<h:inputText size="12" required="true" label="Data de Pagamento">
+					<f:convertDateTime pattern="dd/MM/yyy"/>
+				</h:inputText>
+				
+				<h:outputLabel value="" />
+				<h:panelGroup>
+					<h:selectBooleanCheckbox id="pagoCheckbox" />
+					<h:outputLabel value="Conta Paga" for="pagoCheckbox"/>
+				</h:panelGroup>
+				
+				<h:outputLabel value="" />
+				<h:commandButton value="Salvar" />
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
