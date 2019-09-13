@@ -11,10 +11,13 @@ public class ViewsRouter implements Serializable {
 	
 	private String home = "Home";
 	private String cadastroLancamento = "CadastroLancamento";
-	private String consultaLancamento = "Editarlancamento";
+	private String consultaLancamento = "ConsultaLancamento";
 	private String editarLancamento = "EditarLancamento";
 	
-	
+	public String getEditarLancamento() {
+		return editarLancamento;
+	}
+
 	public String getHome() {
 		return home;
 	}
@@ -26,10 +29,8 @@ public class ViewsRouter implements Serializable {
 	public String getConsultaLancamento() {
 		return consultaLancamento;
 	}
-	
-	public String getEditarLancamento() {
-		return editarLancamento;
-	}
+
 	
 	
+
 }

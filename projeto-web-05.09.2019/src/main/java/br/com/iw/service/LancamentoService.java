@@ -2,15 +2,12 @@ package br.com.iw.service;
 
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import br.com.iw.entity.Lancamento;
+import br.com.iw.model.LancamentoDAO;
 
-@Named
-@RequestScoped
 public class LancamentoService {
 	
 	@Inject
@@ -21,16 +18,23 @@ public class LancamentoService {
 		this.lancamentoDAO.salvar(lancamento);
 	}
 	
-	@Transactional
-	public List<Lancamento> listar() {
+	public List<Lancamento> listar() {		
 		return this.lancamentoDAO.listar();
 	}
-	
+
 	public Object buscarCodigoLancamento(Long codigo) {
-		return this.lancamentoDAO.buscarporID(codigo);
+		return this.lancamentoDAO.buscarPorID(codigo);
+		
+	}
+
+	@Transactional
+	public void atualizar(Lancamento lancamento) {
+		this.lancamentoDAO.atualizar(lancamento);		
 	}
 	
-	public void atualizar(Lancamento lancamento) {
-		this.lancamentoDAO.atualizar(lancamento);
+	@Transactional
+	public void deletar(Lancamento lancamento) {
+		this.lancamentoDAO.deletar(lancamento);		
 	}
+
 }
