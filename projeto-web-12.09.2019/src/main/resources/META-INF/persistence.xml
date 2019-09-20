@@ -5,6 +5,14 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
         <jta-data-source>java:jboss/datasources/MapeamentosDS</jta-data-source>
+        <class>br.com.iw.entity.map01.Turma</class>
+        <class>br.com.iw.mapeamento07.Acidente</class>
+        <class>br.com.iw.mapeamento07.Apolice</class>
+        <class>br.com.iw.mapeamento07.Carro</class>
+        <class>br.com.iw.mapeamento07.Cliente</class>
+        <class>br.com.iw.mapeamento08.Pessoa</class>
+        <class>br.com.iw.mapeamento08.PessoaFisica</class>
+        <class>br.com.iw.mapeamento08.PessoaJuridica</class>
         
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />

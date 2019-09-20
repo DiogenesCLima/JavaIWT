@@ -1,0 +1,10 @@
+package br.com.iw.entity;
+
+public enum StatusPedido {
+	IMPLANTADO,
+	PENDENTE_PAGAMENTO,
+	AGUARDANDO_APROVACAO,
+	EM_ANALISE_FINANCEIRO,
+	EM_EMBARQUE,
+	ENTREGUE
+}
