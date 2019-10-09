@@ -6,54 +6,59 @@
 				xmlns:p="http://primefaces.org/ui">
 				
 				
-	<ui:define name="titulo">Pesquisa Fabricante</ui:define>
+	<ui:define name="titulo">Pesquisa Funcionario</ui:define>
 					
 	<ui:define name="conteudo">
 		<f:metadata>
-			<f:viewAction action="#{pesquisaFabricanteBean.inicializar()}"/>
+			<f:viewAction action="#{pesquisaFuncionarioBean.inicializar()}"/>
 		</f:metadata>
 		
-		<h1>Pesquisa Fabricante</h1>
+		<h1>Pesquisa Funcionario</h1>
 		
 		<h:form id="frmPesquisa">
 			<p:messages id="messages" autoupdate="true" closeble="true"/>
 			
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
-					<p:button value="novo" outcome="/fabricante/cadastro"/>
+					<p:button value="novo" outcome="/funcionario/cadastro"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 			
-			<p:dataTable id="fabricanteTable" value="#{pesquisaFabricanteBean.fabricantes}" var="fabricante"
-						style="margin-top: 20px" emptyMessage="Nenhum fabricante encontrado." rows="20" paginator="true" 
+			<p:dataTable id="funcionarioTable" value="#{pesquisaFuncionarioBean.funcionarios}" var="funcionario"
+						style="margin-top: 20px" emptyMessage="Nenhum funcionario encontrado." rows="20" paginator="true" 
 						paginatorAlwaysVisible="false" paginatorPossition="bottom">
-						
+		
 				<p:column headerText="Código" style="text-align: center; width: 100px">
-					<h:outputText value="#{fabricante.id}" />
+					<h:outputText value="#{funcionario.id}" />
 				</p:column>
 				<p:column headerText="Nome">
-					<h:outputText value="#{fabricante.nome}" />
+					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
+				
+				<p:column headerText="Nascimento">
+					<h:outputText value="#{funcionario.}" />
+				</p:column>
+				
 				<p:column style="width: 100px; text-align: center">
-					<p:button icon="ui-icon-pencil" title="Editar" outcome="/fabricante/editar">
-						<f:param name="fabricante" value="#{fabricante.id}"/>
+					<p:button icon="ui-icon-pencil" title="Editar" outcome="/funcionario/editar">
+						<f:param name="funcionario" value="#{funcionario.id}"/>
 					</p:button>
 					<p:commandButton icon="ui-icon-trash" title="Excluir" 
 									oncomplete="PF('confirmacaoExclusao').show()" process="@this"
 									update=":frmPesquisa:confirmacaoExclusaoDialog">
 						<f:setPropertyActionListener 
-										value="#{fabricante}" 
-										target="#{pesquisaFabricanteBean.fabricanteSelecionado}"/>
+										value="#{funcionario}" 
+										target="#{pesquisaFuncionarioBean.funcionarioSelecionado}"/>
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 			
 			<p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao" 
-							message="Tem certeza que deseja excluir o fabricante #{pesquisaFabricanteBean.fabricanteSelecionado.nome}"
-							header="Exclusão de fabricante" severity="alert">
+							message="Tem certeza que deseja excluir o funcionario #{pesquisaFuncionarioBean.funcionarioSelecionado.nome}"
+							header="Exclusão de funcionario" severity="alert">
 				<p:button value="Não" onclick="PF('confirmacaoExclusao').hide(); return false;"/>
-				<p:commandButton value="Sim" update=":frmPesquisa:fabricanteTable"
-								oncomplete="PF('confirmacaoExclusao').hide()" action="#{pesquisaFabricanteBean.deletar()}"/>
+				<p:commandButton value="Sim" update=":frmPesquisa:funcionarioTable"
+								oncomplete="PF('confirmacaoExclusao').hide()" action="#{pesquisaFuncionarioBean.deletar()}"/>
 			</p:confirmDialog>
 		</h:form>
 	</ui:define>

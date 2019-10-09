@@ -6,21 +6,21 @@
 				xmlns:p="http://primefaces.org/ui">
 				
 				
-	<ui:define name="titulo">Cadastro Fabricante</ui:define>
+	<ui:define name="titulo">Editar Fabricante</ui:define>
 					
 	<ui:define name="conteudo">
 		<f:metadata>
-			<f:viewAction action="#{cadastroFabricanteBean.inicializar()}"/>
+			<f:viewAction action="#{editarFabricanteBean.editarFabricante(param.fabricante)}"/>
 		</f:metadata>
 		
-		<h1>Cadastrar Fabricante</h1>
+		<h1>Editar Fabricante</h1>
 		
-		<h:form id="frmCadastro">
+		<h:form id="frmAtualizar">
 			<p:messages id="messages" autoupdate="true" closeble="true"/>
 			
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup align="right">
-					<p:commandButton value="Salvar" id="botaosalvar" action="#{cadastroFabricanteBean.salvar()}" update="frmCadastro"/>
+					<p:commandButton value="Editar" id="botaoAtualizar" action="#{editarFabricanteBean.atualizar()}" update="frmAtualizar"/>
 				</p:toolbarGroup>
 				<p:toolbarGroup>
 					<p:button value="Pesquisar" outcome="/fabricante/pesquisa"/>
@@ -29,7 +29,7 @@
 			
 			<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px">
 				<p:outputLabel value="Nome" for="nome"/>
-				<p:inputText  id="nome" size="60" maxlength="80" value="#{cadastroFabricanteBean.fabricante.nome}"/>
+				<p:inputText  id="nome" size="60" maxlength="80" value="#{editarFabricanteBean.fabricante.nome}"/>
 			</p:panelGrid>
 		</h:form>
 	</ui:define>
