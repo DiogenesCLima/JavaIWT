@@ -31,13 +31,27 @@
 				<p:column headerText="Código" style="text-align: center; width: 100px">
 					<h:outputText value="#{funcionario.id}" />
 				</p:column>
+				
+				<p:column headerText="Matricula">
+					<h:outputText value="#{funcionario.matricula}" />
+				</p:column>
+				
 				<p:column headerText="Nome">
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 				
 				<p:column headerText="Nascimento">
-					<h:outputText value="#{funcionario.}" />
+					<h:outputText value="#{funcionario.formatarDataNascimento()}" />
 				</p:column>
+				
+				<p:column headerText="CPF">
+					<h:outputText value="#{funcionario.cpf}" />
+				</p:column>
+				
+				<p:column headerText="Sexo">
+					<h:outputText value="#{funcionario.sexo}" />
+				</p:column>
+				
 				
 				<p:column style="width: 100px; text-align: center">
 					<p:button icon="ui-icon-pencil" title="Editar" outcome="/funcionario/editar">
@@ -46,15 +60,13 @@
 					<p:commandButton icon="ui-icon-trash" title="Excluir" 
 									oncomplete="PF('confirmacaoExclusao').show()" process="@this"
 									update=":frmPesquisa:confirmacaoExclusaoDialog">
-						<f:setPropertyActionListener 
-										value="#{funcionario}" 
+						<f:setPropertyActionListener value="#{funcionario}" 
 										target="#{pesquisaFuncionarioBean.funcionarioSelecionado}"/>
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 			
-			<p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao" 
-							message="Tem certeza que deseja excluir o funcionario #{pesquisaFuncionarioBean.funcionarioSelecionado.nome}"
+			<p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao" message="Tem certeza que deseja excluir o funcionario #{pesquisaFuncionarioBean.funcionarioSelecionado.nome}"
 							header="Exclusão de funcionario" severity="alert">
 				<p:button value="Não" onclick="PF('confirmacaoExclusao').hide(); return false;"/>
 				<p:commandButton value="Sim" update=":frmPesquisa:funcionarioTable"

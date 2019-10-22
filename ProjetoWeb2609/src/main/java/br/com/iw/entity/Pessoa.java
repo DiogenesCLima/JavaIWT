@@ -1,5 +1,6 @@
 package br.com.iw.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -74,6 +75,10 @@ public class Pessoa {
 	}
 	
 	
+	public String formatarDataNascimento() {
+		SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyy");
+		return formato.format(this.dataNascimento);
+	}
 
 	
 }

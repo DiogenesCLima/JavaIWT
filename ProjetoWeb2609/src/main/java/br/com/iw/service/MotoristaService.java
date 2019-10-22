@@ -35,12 +35,12 @@ public class MotoristaService implements Serializable {
 	}
 	
 	@Transactional
-	public void atualizar(Motorista motorista) {
+	public void atualizar(Motorista motorista) throws BusinessException{
 		this.motoristaDAO.atualizar(motorista);
 	}
 	
 	@Transactional
-	public void deletar(Motorista motorista) {
+	public void deletar(Motorista motorista) throws BusinessException {
 		this.motoristaDAO.deletar(motorista);
 	}
 

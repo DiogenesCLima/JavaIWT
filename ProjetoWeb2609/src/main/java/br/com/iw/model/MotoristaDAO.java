@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.iw.entity.Motorista;
 
+
 @Model
 public class MotoristaDAO implements DAO{
 

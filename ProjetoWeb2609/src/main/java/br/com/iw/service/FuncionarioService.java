@@ -40,7 +40,7 @@ public class FuncionarioService implements Serializable {
 	}
 	
 	@Transactional
-	public void deletar(Funcionario funcionario) {
+	public void deletar(Funcionario funcionario) throws BusinessException {
 		this.funcionarioDAO.deletar(funcionario);
 	}
 

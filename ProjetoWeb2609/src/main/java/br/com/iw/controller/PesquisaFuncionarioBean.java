@@ -34,9 +34,14 @@ public class PesquisaFuncionarioBean implements Serializable {
 	}
 
 	public void deletar() throws BusinessException {
-		funcionarioService.deletar(funcionarioSelecionado);
-		this.funcionarios.remove(funcionarioSelecionado);
-		facesMessages.info("Funcionario " + funcionarioSelecionado.getNome() + "excluido com sucesso.");
+		try {
+			funcionarioService.deletar(funcionarioSelecionado);
+			this.funcionarios.remove(funcionarioSelecionado);
+			facesMessages.info("Funcionario " + funcionarioSelecionado.getNome() + "excluido com sucesso.");
+		} catch (BusinessException e) {
+			facesMessages.error(e.getMessage());
+		}
+		
 	}
 
 	public Funcionario getFuncionarioSelecionado() {

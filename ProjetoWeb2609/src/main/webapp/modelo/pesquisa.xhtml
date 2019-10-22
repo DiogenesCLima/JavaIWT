@@ -1,0 +1,71 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+				xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:h="http://xmlns.jcp.org/jsf/html"
+				xmlns:f="http://xmlns.jcp.org/jsf/core"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:p="http://primefaces.org/ui">
+				
+				
+	<ui:define name="titulo">Pesquisa Modelo</ui:define>
+					
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewAction action="#{pesquisaModeloCarroBean.inicializar()}"/>
+		</f:metadata>
+		
+		<h1>Pesquisa ModeloCarro</h1>
+		
+		<h:form id="frmPesquisa">
+			<p:messages id="messages" autoupdate="true" closeble="true"/>
+			
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="novo" outcome="/modelo/cadastro"/>
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			<p:dataTable id="modelocarroTable" value="#{pesquisaModeloCarroBean.modeloCarros}" var="modelocarro"
+						style="margin-top: 20px" emptyMessage="Nenhum modelocarro encontrado." rows="20" paginator="true" 
+						paginatorAlwaysVisible="false" paginatorPossition="bottom">
+						
+				<p:column headerText="Código" style="text-align: center; width: 100px">
+					<h:outputText value="#{modelocarro.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{modelocarro.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Fabricante">
+					<h:outputText value="#{modelocarro.fabricante.nome}"/>
+				</p:column>
+				
+				<p:column headerText="Categoria">
+					<h:outputText value="#{modelocarro.categoria}" />
+				</p:column>
+				
+				
+				<p:column style="width: 100px; text-align: center">
+					<p:button icon="ui-icon-pencil" title="Editar" outcome="/modelo/editar">
+						<f:param name="modelocarro" value="#{modelocarro.id}"/>
+					</p:button>
+					<p:commandButton icon="ui-icon-trash" title="Excluir" 
+									oncomplete="PF('confirmacaoExclusao').show()" process="@this"
+									update=":frmPesquisa:confirmacaoExclusaoDialog">
+						<f:setPropertyActionListener 
+										value="#{modelocarro}" 
+										target="#{pesquisaModeloCarroBean.modeloCarroSelecionado}"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			
+			<p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao" 
+							message="Tem certeza que deseja excluir o modelocarro #{pesquisaModeloCarroBean.modeloCarroSelecionado.descricao}"
+							header="Exclusão de modelocarro" severity="alert">
+				<p:button value="Não" onclick="PF('confirmacaoExclusao').hide(); return false;"/>
+				<p:commandButton value="Sim" update=":frmPesquisa:modelocarroTable"
+								oncomplete="PF('confirmacaoExclusao').hide()" action="#{pesquisaModeloCarroBean.deletar()}"/>
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+				
+</ui:composition>
